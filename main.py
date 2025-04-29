@@ -35,9 +35,9 @@ def play_plinko():
     betmultiplier = betamount / 50
 
     def simulate_plinko_animated():
-        position = 6  # Start in the middle
+        position = int(input("Which column? "))  # Chooses column to drop ball
         rows = 14
-        path = [position]
+        path = [max(0, min(10, position-1))]
         
         for _ in range(rows):
             move = random.choice([-1, 1])
@@ -48,8 +48,9 @@ def play_plinko():
         return path
 
     def print_board(path):
+        print("|1 |2  |3  |4  |5  |6  |7  |8  |9  |10 |11|")
         for pos in path:
-            row = ["   "] * 11
+            row = ["    "] * 11
             row[pos] = " o "
             print("".join(row))
             time.sleep(0.14)  # Pause for animation effect
